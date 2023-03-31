@@ -12,9 +12,14 @@ public class FindMinMaxWithStream {
         minMaxConsumer.accept(min, max);
     }
 
+    public static void even(List<Integer> list) {
+        System.out.println(" Even number " + list.stream().filter(l -> l % 2 == 0).count());
+    }
+
     public static void main(String[] args) {
         BiConsumer<Integer, Integer> biConsumer =
                 ((integer, integer2) -> System.out.println(" Min " + integer + "\n Max " + integer2));
         findMinMax(IntStream.rangeClosed(1, 100).boxed(), Comparator.naturalOrder(), biConsumer);
+        even(IntStream.rangeClosed(1, 100).boxed().toList());
     }
 }
